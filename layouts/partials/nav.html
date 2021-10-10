@@ -1,11 +1,7 @@
 <nav>
-	<ul>
 	{{ range .Site.Menus.nav }}
-		<li>
-			<a href="{{ .URL }}">
-				<span>{{ .Name }}</span>
-			</a>
-		</li>
+		<a class=menubutton href="{{ .URL }}">
+			<p class=menubuttontext>{{ .Name }}</p>
+		</a>
 	{{ end }}
-	</ul>
 </nav>
