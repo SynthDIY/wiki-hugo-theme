@@ -7,6 +7,11 @@
 	<h2>
 		<a href="{{ .RelPermalink }}">{{ .Title }}</a>
 	</h2>
+	<div class="tagslist">
+	{{ range .Params.tags }}
+	<a href="/tags/{{ . | urlize }}/">#{{ . }}</a>
+	{{ end }}
+	</div>
 </li>
 {{ end }}
 </ul>
