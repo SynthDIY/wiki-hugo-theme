@@ -1,18 +1,21 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
-{{ .Content }}
-<ul>
-{{ range .Pages.ByPublishDate.Reverse }}
-<li>
-	<h2>
-		<a href="{{ .RelPermalink }}">{{ .Title }}</a>
-	</h2>
+{{- .Content }}
+{{- range .Pages.ByPublishDate.Reverse }}
+<article class="list-article">
+	<a href="{{ .RelPermalink }}">
+		<h2>{{ .Title }}</h2>
+		{{- if .Summary }}
+		<p>{{ .Summary }}...</p>
+		{{- end }}
+	</a>
+	{{- if .Params.tags }}
 	<div class="tagslist">
-	{{ range .Params.tags }}
-	<a href="/tags/{{ . | urlize }}/">#{{ . }}</a>
-	{{ end }}
+		{{ range .Params.tags }}
+		<a href="/tags/{{ . | urlize }}/">#{{ . }}</a>
+		{{ end }}
 	</div>
-</li>
-{{ end }}
-</ul>
+	{{- end }}
+</article>
+{{- end }}
 {{ end }}

@@ -1,7 +1,5 @@
 <nav>
-	{{ range .Site.Menus.nav }}
-		<a class=menubutton href="{{ .URL }}">
-			<p class=menubuttontext>{{ .Name }}</p>
-		</a>
-	{{ end }}
+	{{- range .Site.Menus.nav }}
+	<a class=menubutton href="{{ .URL }}">{{ .Name }}</a>
+	{{- end }}
 </nav>
