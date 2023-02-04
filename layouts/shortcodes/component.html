@@ -1,0 +1,37 @@
+<div class="component">
+	<a class="component-header" href="{{ .Get "link" }}">
+		<h3>{{ .Get "manufacturer" }} {{ .Get "partno" }}</h3>
+		{{ if .Get "shop" | eq "lcsc" }}
+		<span style="color:#007aff"><b><i>LCSC</i></b></span>
+		{{ else if .Get "shop" | eq "reichelt" }}
+		<span style="color:#1e3370"><b>reichelt</b></span>
+		{{ else if .Get "shop" | eq "tayda" }}
+		<span style="color:#333e44"><b>TAYDA</b></span>
+		{{ else if .Get "shop" | eq "thonk" }}
+		<span style="color:#000000"><b>THONK</b></span>
+		{{ end }}
+	</a>
+	<table>
+		<tr>
+			<th>Manufacturer</th>
+			<td>{{ .Get "manufacturer" }}</td>
+		</tr>
+		<tr>
+			<th>Part #</th>
+			<td>{{ .Get "partno" }}</td>
+		</tr>
+		{{ with .Get "shoppartno" }}
+		<tr>
+			<th>Shop Part #</th>
+			<td>{{ . }}</th>
+		</tr>
+		{{ end }}
+		{{ with .Get "datasheet" }}
+		<tr>
+			<th>
+				<a href="{{ . }}">Datasheet</a>
+			</th>
+		</tr>
+		{{ end }}
+	</table>
+</div>
